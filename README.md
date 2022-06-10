@@ -1,2 +1,3 @@
 # CourseEg
- Python
+ Python code examples.
+ Simple projects.

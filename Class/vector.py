@@ -1,3 +1,8 @@
+"""
+    二维向量处理 + static method
+"""
+
+
 class Vector2:
     def __init__(self, x, y):
         self.x = x
@@ -38,6 +43,7 @@ class DoubleListHelper:
             element = list_target[vect_pos.x][vect_pos.y]
             list_result.append(element)
         return list_result
+
 
 # Testing
 list01 = [
