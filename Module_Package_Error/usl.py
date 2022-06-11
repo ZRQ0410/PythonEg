@@ -4,6 +4,7 @@ from model import StudentModel
 from errorHandler import ErrorHandler
 import time
 
+
 class StudentManagerView:
     """
         学生管理视图：主要负责界面逻辑
@@ -15,14 +16,14 @@ class StudentManagerView:
 
     @staticmethod
     def __display_menu():
-        print("""+----------------------------+
-| 1) 添加学生信息              |
-| 2) 显示学生信息              |
-| 3) 删除学生信息              |
-| 4) 修改学生成绩              |
-| 5) 按学生成绩低到高显示学生信息 |
-| 6) 退出                     |
-+----------------------------+""")
+        print("""+--------------------------------+
+| 1) 添加学生信息                |
+| 2) 显示学生信息                |
+| 3) 删除学生信息                |
+| 4) 修改学生成绩                |
+| 5) 按学生成绩低到高显示学生信息|
+| 6) 退出                        |
++--------------------------------+""")
 
     def __select_menu(self):
         choice = input("请输入选项：")
@@ -96,12 +97,12 @@ class StudentManagerView:
                 break
         stu.name = input("需要修改的学生姓名：")
         while True:
-            stu.age = int(input("需要修改的学生年龄："))
+            stu.age = input("需要修改的学生年龄：")
             stu.age = ErrorHandler.age_checker(stu.age)
             if stu.age != -999:
                 break
         while True:
-            stu.score = int(input("需要修改的学生分数："))
+            stu.score = input("需要修改的学生分数：")
             stu.score = ErrorHandler.score_checker(stu.score)
             if stu.score != -999:
                 break
