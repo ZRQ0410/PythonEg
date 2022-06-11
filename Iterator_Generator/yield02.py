@@ -8,5 +8,6 @@ class MyRange:
             num += 1
             yield num
 
+
 for i in MyRange(5):
     print(i)

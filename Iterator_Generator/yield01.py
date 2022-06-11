@@ -20,6 +20,7 @@ class SkillManager:
         # for i in self.__skills:
         #     yield i
 
+
 manager = SkillManager()
 manager.add_skill("skill01")
 manager.add_skill("skill02")
@@ -32,4 +33,3 @@ while True:
         print(iterator.__next__())
     except StopIteration:
         break
-
