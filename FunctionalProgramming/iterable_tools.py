@@ -14,7 +14,7 @@ class IterableHelper:
             在可迭代对象中查找满足条件的所有元素
         :param iterable: 可迭代对象类型，需要查找的数据
         :param func_cond: 函数类型，查找的条件
-        :return: 生成器对象
+        :yield: 生成器对象
         """
         for i in iterable:
             if func_cond(i):
@@ -52,7 +52,7 @@ class IterableHelper:
             通用筛选方法
         :param iterable: 可迭代对象类型，需要查找的数据
         :param func_handle: 筛选的逻辑
-        :return: 生成器对象
+        :yield: 生成器对象
         """
         for i in iterable:
             yield func_handle(i)

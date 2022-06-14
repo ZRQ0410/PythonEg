@@ -1,4 +1,8 @@
-from Functions.iterable_tools import IterableHelper
+"""
+    处理、筛选对象
+"""
+from FunctionalProgramming.iterable_tools import IterableHelper
+
 
 class Wife:
     def __init__(self, name="", face_score=0, age=0, height=0):
@@ -21,9 +25,11 @@ list_wife = [
     Wife("gg", 88, 26, 170)
 ]
 
+
 # 颜值 > 90
 def cond01(item):
     return item.face_score > 90
+
 
 # 身高 < 170
 def cond02(item):
@@ -32,13 +38,16 @@ def cond02(item):
 # for i in IterableHelper.find_all(list_wife, cond01):
 #     print(i)
 
+
 def cond03(item):
     return item.name == "ee"
+
 
 def cond04(item):
     return item.face_score > 95
 
 # print(IterableHelper.find_first(list_wife, cond03))
+
 
 def cond05(item):
     return len(item.name) > 2
@@ -46,10 +55,13 @@ def cond05(item):
 # def cond06(item):
 #     return item.age < 25
 
+
 print(IterableHelper.get_count(list_wife, lambda item: item.age < 25))
+
 
 def handle01(item):
     return item.name
+
 
 def handle02(item):
     return (item.name, item.face_score)
