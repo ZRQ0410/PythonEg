@@ -109,3 +109,15 @@ class IterableHelper:
             if func_handle(iterable[i]):
                 del iterable[i]
         return iterable
+
+    @staticmethod
+    def order_by(iterable, func_handle):
+        """
+            冒泡升序排列
+        :param iterable: 可迭代对象类型，需要排序的数据
+        :param func_handle: 排序的逻辑
+        """
+        for r in range(len(iterable)-1):
+            for c in range(len(iterable)-1-r):
+                if (func_handle(iterable[c]) > func_handle(iterable[c+1])):
+                    iterable[c], iterable[c+1] = iterable[c+1], iterable[c]

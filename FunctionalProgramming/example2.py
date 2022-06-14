@@ -1,7 +1,7 @@
 """
-    处理、筛选对象
+    处理、筛选Wife对象
 """
-from FunctionalProgramming.iterable_tools import IterableHelper
+from iterable_tools import IterableHelper
 
 
 class Wife:
@@ -35,9 +35,6 @@ def cond01(item):
 def cond02(item):
     return item.height < 170
 
-# for i in IterableHelper.find_all(list_wife, cond01):
-#     print(i)
-
 
 def cond03(item):
     return item.name == "ee"
@@ -46,17 +43,18 @@ def cond03(item):
 def cond04(item):
     return item.face_score > 95
 
-# print(IterableHelper.find_first(list_wife, cond03))
-
 
 def cond05(item):
     return len(item.name) > 2
 
-# def cond06(item):
-#     return item.age < 25
+
+def cond06(item):
+    return item.age < 25
 
 
-print(IterableHelper.get_count(list_wife, lambda item: item.age < 25))
+for i in IterableHelper.find_all(list_wife, cond01):
+    print(i)
+print(IterableHelper.find_first(list_wife, cond03))
 
 
 def handle01(item):
@@ -70,6 +68,7 @@ def handle02(item):
 #     print(i)
 
 
+# 也可以用lambda替换cond函数
 # print(IterableHelper.is_exist(list_wife, lambda item: item.height > 170))
 #
 # print(IterableHelper.sum(list_wife, lambda item: item.height))
@@ -81,5 +80,5 @@ def handle02(item):
 
 # for i in map(lambda item: item.name, list_wife):
 #     print(i)
-
+print(IterableHelper.get_count(list_wife, lambda item: item.age < 25))
 print(max(list_wife, key=lambda item: item.face_score))

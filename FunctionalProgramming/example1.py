@@ -9,9 +9,9 @@ def cond01(num):
     return num % 2 == 0
 
 
-# 条件2：>10且<50
+# 条件2：<10的数
 def cond02(num):
-    return 10 < num < 50
+    return num < 10
 
 
 def find(cond):
@@ -20,5 +20,14 @@ def find(cond):
             yield i
 
 
-for i in find(cond02):
-    print(i)
+for i in find(cond01):
+    print(i, end=" ")
+print()
+
+
+# 打印<10的前3个数
+generator = find(cond02)
+# 将惰性操作变为立即操作
+list_result = list(generator)  # 生成器 -> 列表
+for i in list_result[:3]:
+    print(i, end=" ")
