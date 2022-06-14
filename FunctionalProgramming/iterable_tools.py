@@ -114,6 +114,7 @@ class IterableHelper:
     def order_by(iterable, func_handle):
         """
             冒泡升序排列
+            (直接用sorted函数即可: for i in sorted():)
         :param iterable: 可迭代对象类型，需要排序的数据
         :param func_handle: 排序的逻辑
         """
