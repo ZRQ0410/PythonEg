@@ -5,7 +5,7 @@
 """
 import random
 
-from project01.model import LocationModel
+from model import LocationModel
 
 
 class GameCoreController:
@@ -36,7 +36,8 @@ class GameCoreController:
         self.__zero_to_end()
         for i in range(len(self.__list_merge) - 1):
             if self.__list_merge[i] == self.__list_merge[i + 1]:
-                self.__list_merge[i], self.__list_merge[i + 1] = self.__list_merge[i] * 2, 0
+                self.__list_merge[i], self.__list_merge[i +
+                                                        1] = self.__list_merge[i] * 2, 0
         self.__zero_to_end()
 
     def move_left(self):

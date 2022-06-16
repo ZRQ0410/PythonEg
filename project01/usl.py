@@ -1,7 +1,7 @@
 # user show layer 游戏界面逻辑模块
 import os
 
-from project01.bll import GameCoreController
+from bll import GameCoreController
 
 
 class GameConsoleView:
