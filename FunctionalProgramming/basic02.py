@@ -1,25 +1,22 @@
 """
-    闭包--外部嵌套作用域(对于内部函数而言)
+    闭包
 """
 
 
 def func01():
-    # a是func01的局部作用域，是func02的外部嵌套作用域
-    a = 1
-    b = 1
+    a, b = 1, 1
 
+    # 内嵌函数
     def func02():
-        # a是func02的局部变量，不能修改func01的a
-        a = 2
-
-    def func03():
-        nonlocal b
+        nonlocal b  # 修改外部变量要申明nonlocal
         b = 2
+        print(a, b)  # 内嵌函数引用外部函数的变量
 
-    func02()
-    print("a is", a)
-    func03()
-    print("b is", b)
+    # 返回内嵌函数
+    return func02
 
 
-func01()
+# 调用外部函数
+result = func01()
+# 调用内嵌函数
+result()

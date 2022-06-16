@@ -1,20 +1,32 @@
-def func01():
-    print(1)
-    return 'ok'
+"""
+    装饰器: 对功能增加权限验证(增加新功能，不改变原有代码(开闭原则))
+"""
 
-def func02(a, b, c=0):
-    print(2, a, b, c)
 
-def print_func_name(func):
-    def wrapper(*args, **kwargs):
-        # 新功能
-        print(func.__name__)
-        # 旧功能
-        return func(*args, **kwargs)
+# 装饰器的功能
+def verify(func):
+    def wrapper(*args, **kargs):  # kargs针对关键字实参
+        print("权限验证")
+        func(*args, **kargs)  # 放入实参
     return wrapper
 
-func01 = print_func_name(func01)
-print(func01())  # 执行的是内部函数
 
-func02 = print_func_name(func02)
-func02(100, 200, c=300)
+@verify  # 拦截调用，增加新功能
+def enter_background(id, pwd):
+    print("进入后台", id, pwd)
+
+
+@verify
+def delete_order(id):
+    print("删除订单", id)
+
+
+"""
+@verify的含义:
+# enter_background = 新功能(验证) + 旧功能(进入后台)
+enter_background = verify(enter_background)
+delete_order = verify(delete_order)
+"""
+
+enter_background("abc", pwd=1234)
+delete_order(101)
