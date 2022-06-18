@@ -3,7 +3,6 @@
 """
     游戏核心逻辑控制器
 """
-from binascii import b2a_hex
 import random
 import copy
 
@@ -70,12 +69,6 @@ class GameCoreController:
         for i in range(len(self.__map)):
             for j in range(i + 1, len(self.__map)):
                 self.__map[i][j], self.__map[j][i] = self.__map[j][i], self.__map[i][j]
-
-
-# =============================================================================
-
-
-# =============================================================================
 
     @valid_move
     def __move_left(self):
