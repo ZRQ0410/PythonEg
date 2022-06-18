@@ -98,7 +98,7 @@ class GameCoreController:
         if len(self.__list_empty_location) == 0:
             return
         loc = random.choice(self.__list_empty_location)
-        self.map[loc.r][loc.c] = self.__select_random_num()
+        self.__map[loc.r][loc.c] = self.__select_random_num()
 
     # 判断游戏是否结束
     def is_game_over(self):
