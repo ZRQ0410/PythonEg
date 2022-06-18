@@ -3,9 +3,23 @@
 """
     游戏核心逻辑控制器
 """
+from binascii import b2a_hex
 import random
+import copy
 
 from model import LocationModel
+
+
+# 装饰器函数，确认是否可以向某个方向移动
+def valid_move(func):
+    def wrapper(self, *args, **kargs):
+        temp = copy.deepcopy(self.map)
+        func(self, *args, **kargs)
+        if temp == self.map:
+            self.valid_movement = False
+            return
+        self.valid_movement = True
+    return wrapper
 
 
 class GameCoreController:
@@ -16,10 +30,19 @@ class GameCoreController:
                       [0, 0, 0, 0],
                       [0, 0, 0, 0]]
         self.__list_empty_location = []
+        self.valid_movement = False
 
     @property
     def map(self):
         return self.__map
+
+    @property
+    def valid_movement(self):
+        return self.__valid_movement
+
+    @valid_movement.setter
+    def valid_movement(self, b):
+        self.__valid_movement = b
 
     def __zero_to_end(self):
         """
@@ -40,22 +63,6 @@ class GameCoreController:
                                                         1] = self.__list_merge[i] * 2, 0
         self.__zero_to_end()
 
-    def move_left(self):
-        """
-            将二维列表中的元素向左移动
-        """
-        for self.__list_merge in self.__map:
-            self.__merge()
-
-    def move_right(self):
-        """
-            向右移动
-        """
-        for self.__list_merge in self.__map:
-            self.__list_merge.reverse()
-            self.__merge()
-            self.__list_merge.reverse()
-
     def __transpose(self):
         """
             方阵转置
@@ -64,21 +71,55 @@ class GameCoreController:
             for j in range(i + 1, len(self.__map)):
                 self.__map[i][j], self.__map[j][i] = self.__map[j][i], self.__map[i][j]
 
-    def move_up(self):
+
+# =============================================================================
+
+
+# =============================================================================
+
+    @valid_move
+    def __move_left(self):
         """
-            向上移动
+            向左移动
+        """
+        for self.__list_merge in self.__map:
+            self.__merge()
+
+    @valid_move
+    def __move_right(self):
+        """
+            向右移动
+        """
+        for self.__list_merge in self.__map:
+            self.__list_merge.reverse()
+            self.__merge()
+            self.__list_merge.reverse()
+
+    def __move_up(self):
+        """
+            向上移动(包含向左移动)
         """
         self.__transpose()
-        self.move_left()
+        self.__move_left()
         self.__transpose()
 
-    def move_down(self):
+    def __move_down(self):
         """
-            向下移动
+            向下移动(包含向右移动)
         """
         self.__transpose()
-        self.move_right()
+        self.__move_right()
         self.__transpose()
+
+    def move(self, dir):
+        if dir == "w":
+            self.__move_up()
+        elif dir == "a":
+            self.__move_left()
+        elif dir == "d":
+            self.__move_right()
+        else:
+            self.__move_down()
 
     def __calculate_empty_location(self):
         self.__list_empty_location.clear()

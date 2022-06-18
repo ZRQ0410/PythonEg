@@ -1,5 +1,4 @@
 # user show layer 游戏界面逻辑模块
-import os
 
 from bll import GameCoreController
 
@@ -19,15 +18,13 @@ class GameConsoleView:
         self.__show_map()
 
     def __move(self):
+        valid_dir = ["w", "a", "s", "d"]
         direction = input("方向：")
-        if direction == "w":
-            self.__controller.move_up()
-        elif direction == "s":
-            self.__controller.move_down()
-        elif direction == "a":
-            self.__controller.move_left()
-        elif direction == "d":
-            self.__controller.move_right()
+        if direction in valid_dir:
+            self.__controller.move(direction)
+            if not self.__controller.valid_movement:
+                print("不能向此方向移动。")
+                return -999
         elif direction == "":
             print("已退出。")
             return 999
@@ -40,7 +37,7 @@ class GameConsoleView:
             is_end = self.__move()
             if is_end == 999:
                 break
-            elif is_end == 999:
+            elif is_end == -999:
                 continue
             else:
                 print()
