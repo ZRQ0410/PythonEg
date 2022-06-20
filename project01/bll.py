@@ -6,7 +6,7 @@
 import random
 import copy
 
-from model import LocationModel
+from model import LocationModel, DirectionModel
 
 
 # 装饰器函数，确认是否可以向某个方向移动
@@ -14,6 +14,7 @@ def valid_move(func):
     def wrapper(self, *args, **kargs):
         temp = copy.deepcopy(self.map)
         func(self, *args, **kargs)
+
         if temp == self.map:
             self.valid_movement = False
             return
@@ -105,11 +106,11 @@ class GameCoreController:
         self.__transpose()
 
     def move(self, dir):
-        if dir == "w":
+        if dir == DirectionModel.UP.value:
             self.__move_up()
-        elif dir == "a":
+        elif dir == DirectionModel.LEFT.value:
             self.__move_left()
-        elif dir == "d":
+        elif dir == DirectionModel.RIGHT.value:
             self.__move_right()
         else:
             self.__move_down()
@@ -156,3 +157,5 @@ if __name__ == "__main__":
     # controller.generate_new_num()
 
     print(controller.is_game_over())
+
+    print(controller.map)
