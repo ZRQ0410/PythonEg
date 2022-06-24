@@ -1,3 +1,3 @@
-a = [1, 2, 3]
-a.remove(2)
-print(a)
+a = {"a": 1, "b": 2}
+
+print(1 in a)

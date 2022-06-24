@@ -1,6 +1,7 @@
 # user show layer 游戏界面逻辑模块
 
 from bll import GameCoreController
+import os
 
 
 class GameConsoleView:
@@ -12,9 +13,11 @@ class GameConsoleView:
         self.__controller = GameCoreController()
 
     def __start(self):
+        # 产生两个数字，绘制界面
         self.__controller.generate_new_num()
         self.__controller.generate_new_num()
         print("需上下左右移动，请输入wsad。无输入则退出。")
+        # 绘制界面
         self.__show_map()
 
     def __move(self):
@@ -49,7 +52,9 @@ class GameConsoleView:
                 self.__show_map()
 
     def __show_map(self):
-        # os.system("clear")  # 清空屏幕。要在终端才能运行，否则会报错
+        # 清空屏幕: 要在终端才能运行，否则会报错
+        # windows命令cls，linux命令clear
+        # os.system("cls")
         for r in self.__controller.map:
             for c in r:
                 print(c, end="\t")
