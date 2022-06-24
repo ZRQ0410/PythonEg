@@ -14,7 +14,6 @@ def valid_move(func):
     def wrapper(self, *args, **kargs):
         temp = copy.deepcopy(self.map)
         func(self, *args, **kargs)
-
         if temp == self.map:
             self.valid_movement = False
             return
@@ -116,6 +115,7 @@ class GameCoreController:
             self.__move_down()
 
     def __calculate_empty_location(self):
+        # 每次统计空位置，都先清空之前的列表
         self.__list_empty_location.clear()
         for r in range(len(self.__map)):
             for c in range(len(self.__map[r])):
@@ -133,19 +133,16 @@ class GameCoreController:
         if len(self.__list_empty_location) == 0:
             return
         loc = random.choice(self.__list_empty_location)
-        self.__map[loc.r][loc.c] = self.__select_random_num()
+        self.__map[loc.row][loc.col] = self.__select_random_num()
+        self.__list_empty_location.remove(loc)
 
     # 判断游戏是否结束
     def is_game_over(self):
         if len(self.__list_empty_location) > 0:
             return False
-        for r in range(len(self.__map)):
-            for c in range(len(self.__map) - 1):
-                if self.__map[r][c] == self.map[r][c + 1]:
-                    return False
-        for c in range(len(self.__map)):
-            for r in range(len(self.__map) - 1):
-                if self.__map[r][c] == self.map[r + 1][c]:
+        for i in range(len(self.__map)):
+            for j in range(len(self.__map) - 1):
+                if self.__map[i][j] == self.map[i][j + 1] or self.__map[j][i] == self.map[j + 1][i]:
                     return False
         return True
 

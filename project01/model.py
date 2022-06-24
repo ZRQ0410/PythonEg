@@ -7,8 +7,8 @@ class LocationModel:
     """
 
     def __init__(self, r, c):
-        self.r = r
-        self.c = c
+        self.row = r
+        self.col = c
 
 
 # unique:防止两个name有相同的value

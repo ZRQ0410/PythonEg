@@ -34,6 +34,10 @@ class GameConsoleView:
 
     def __update(self):
         while True:
+            if self.__controller.is_game_over():
+                print("游戏结束。")
+                break
+
             is_end = self.__move()
             if is_end == 999:
                 break
@@ -43,10 +47,6 @@ class GameConsoleView:
                 print()
                 self.__controller.generate_new_num()
                 self.__show_map()
-
-            if self.__controller.is_game_over():
-                print("游戏结束。")
-                break
 
     def __show_map(self):
         # os.system("clear")  # 清空屏幕。要在终端才能运行，否则会报错
