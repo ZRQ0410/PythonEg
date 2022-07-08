@@ -5,11 +5,19 @@
 """
     # 生成器: 可迭代对象(可以参与for) + 迭代器(产生数据)
     class Generator:
-        def __init__(self):
+        def __init__(self, stop_value):
+            self.begin = 0
+            self.stop_value = stop_value
+            
+        def __iter__(self):
             return self
             
         def __next__(self):
-            ...
+            if self.begin >= self.stop_value:
+                raise StopIteration
+            temp = self.begin
+            self.begin += 1
+            return temp
 """
 
 
