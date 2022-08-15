@@ -35,13 +35,13 @@ class LinkedList:
 
     # 遍历打印链表
     def show(self):
-        p = self.head.next
+        p = self.head
         # for i in range(self.length()):
         #     print(p.val)
         #     p = p.next
-        while p is not None:
-            print(p.val, end=" ")
+        while p.next is not None:
             p = p.next
+            print(p.val, end=" ")
         print()
 
     # 判断列表是否为空
@@ -96,11 +96,23 @@ class LinkedList:
         else:
             p.next = p.next.next
 
+    # 传入结点位置，获取结点值
+    def get_val(self, index):
+        if self.is_empty():
+            raise IndexError("linked list index out of range")
+        p = self.head.next
+        for i in range(index):
+            if p.next is None:
+                raise IndexError("linked list index out of range")
+            p = p.next
+        return p.val
+
 
 # testing
 ll = LinkedList()
 ll.init_list([2, 5, 3, 8, 6])
 # ll.head_insert(11)
 # ll.insert(2, 20)
-ll.remove(100)
+# ll.remove(100)
+print(ll.get_val(2))
 ll.show()
