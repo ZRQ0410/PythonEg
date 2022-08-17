@@ -55,27 +55,27 @@ class LinkedList:
         self.head.next = None
 
     # 返回链表长度
-    # def length(self):
-    #     p = self.head.next
-    #     num = 0
-    #     while p is not None:
-    #         num += 1
-    #         p = p.next
-    #     return num
+    def length(self):
+        p = self.head.next
+        num = 0
+        while p is not None:
+            num += 1
+            p = p.next
+        return num
 
-    # 尾部插入
-    # def append(self, val):
-    #     p = self.head.next
-    #     while p.next is not None:
-    #         p = p.next
-    #     p.next = Node(val)
+    # 尾部插入(非空时)
+    def append(self, val):
+        p = self.head.next
+        while p.next is not None:
+            p = p.next
+        p.next = Node(val)
 
-    # 插入到开头
-    # def head_insert(self, val):
-    #     temp = self.head.next
-    #     self.head.next = Node(val, temp)
+    # 插入到开头（非空时）
+    def head_insert(self, val):
+        temp = self.head.next
+        self.head.next = Node(val, temp)
 
-    # 插入到某位置
+    # 插入到某位置（非空时）
     def insert(self, index, val):
         p = self.head
         for i in range(index):
@@ -109,10 +109,11 @@ class LinkedList:
 
 
 # testing
-ll = LinkedList()
-ll.init_list([2, 5, 3, 8, 6])
-# ll.head_insert(11)
-# ll.insert(2, 20)
-# ll.remove(100)
-print(ll.get_val(2))
-ll.show()
+if __name__ == "__main__":
+    ll = LinkedList()
+    ll.init_list([2, 5, 3, 8, 6])
+    ll.head_insert(11)
+    ll.insert(2, 20)
+    ll.remove(100)
+    print(ll.get_val(2))
+    ll.show()
