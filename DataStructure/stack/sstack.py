@@ -17,6 +17,7 @@ class SStack:
         # 空列表作为栈的存储空间
         # 列表最后一个元素作为栈顶
         self._elems = []
+        # _表示不要在类外使用，但如果有子类可以继承（不是强制语法规定）
 
     def is_empty(self):
         return self._elems == []
