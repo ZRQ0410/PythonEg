@@ -41,7 +41,7 @@ class LStack:
 
     def top(self):
         if self._top is None:
-            raise StackError
+            raise StackError("Stack is empty")
         return self._top.val
 
 
