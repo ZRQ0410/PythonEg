@@ -12,6 +12,7 @@ class StackError(Exception):
     pass
 
 
+# 节点类
 class Node:
     def __init__(self, val, next=None):
         self.val = val
