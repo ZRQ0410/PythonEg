@@ -4,15 +4,15 @@
 """
 
 
-# 创建结点类
+# 创建节点类
 class Node:
     """
-    实例对象中包含数据部分和指向下一个结点的部分
+    实例对象中包含数据部分和指向下一个节点的部分
     """
 
     def __init__(self, val, next=None):
         self.val = val  # 存储数据
-        self.next = next  # 下一个结点
+        self.next = next  # 下一个节点
 
 
 class LinkedList:
@@ -22,11 +22,11 @@ class LinkedList:
 
     def __init__(self):
         """
-        初始化链表，标记一个链表的开端，以便获取后续结点
+        初始化链表，标记一个链表的开端，以便获取后续节点
         """
         self.head = Node(None)  # 表头
 
-    # 通过list_为链表初始化一组结点
+    # 通过list_为链表初始化一组节点
     def init_list(self, list_):
         p = self.head  # 移动变量
         for item in list_:
@@ -86,7 +86,7 @@ class LinkedList:
         temp = p.next
         p.next = Node(val, temp)
 
-    # 根据值删除结点
+    # 根据值删除节点
     def remove(self, val):
         p = self.head
         while p.next and p.next.val != val:
@@ -96,7 +96,7 @@ class LinkedList:
         else:
             p.next = p.next.next
 
-    # 传入结点位置，获取结点值
+    # 传入节点位置，获取节点值
     def get_val(self, index):
         if self.is_empty():
             raise IndexError("linked list index out of range")
