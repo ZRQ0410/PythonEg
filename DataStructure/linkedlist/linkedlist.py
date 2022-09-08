@@ -36,9 +36,6 @@ class LinkedList:
     # 遍历打印链表
     def show(self):
         p = self.head
-        # for i in range(self.length()):
-        #     print(p.val)
-        #     p = p.next
         while p.next is not None:
             p = p.next
             print(p.val, end=" ")
@@ -55,13 +52,13 @@ class LinkedList:
         self.head.next = None
 
     # 返回链表长度
-    def length(self):
-        p = self.head.next
-        num = 0
-        while p is not None:
-            num += 1
-            p = p.next
-        return num
+    # def length(self):
+    #     p = self.head.next
+    #     num = 0
+    #     while p is not None:
+    #         num += 1
+    #         p = p.next
+    #     return num
 
     # 尾部插入(非空时)
     def append(self, val):
