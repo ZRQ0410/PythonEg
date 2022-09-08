@@ -43,6 +43,7 @@ if __name__ == "__main__":
     sys.path.append(
         "c:\\Users\\12927\\Desktop\\PythonNote\\CourseEg\\DataStructure")
 
+    ######## 将队列翻转 ########
     for i in range(10):
         sq.enqueue(i)
     # 翻转队列顺序
