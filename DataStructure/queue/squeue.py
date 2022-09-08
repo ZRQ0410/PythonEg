@@ -43,10 +43,10 @@ if __name__ == "__main__":
     sys.path.append(
         "c:\\Users\\12927\\Desktop\\PythonNote\\CourseEg\\DataStructure")
 
-    ######## 将队列翻转 ########
+    ######## 将队列翻转（链式queue也适用） ########
     for i in range(10):
         sq.enqueue(i)
-    # 翻转队列顺序
+    # 翻转队列顺序，借用stack
     from stack.sstack import *
     st = SStack()
     while not sq.is_empty():
