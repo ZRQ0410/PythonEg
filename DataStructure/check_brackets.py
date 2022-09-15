@@ -44,7 +44,7 @@ def check_bracket():
             if sk.is_empty() or sk.pop()[0] != opposite[br]:
                 print("Mismatch at %d for %s" % (pos, br))
                 break
-    # 执行完for后（未执行break）
+    # 执行完for后（未执行break，则执行else）
     else:
         # 如果stack非空：左括号多了
         if sk.is_empty():
