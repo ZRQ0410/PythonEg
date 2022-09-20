@@ -2,7 +2,7 @@
 def bubbleSort(list_):
     # 表示比较多少轮
     for i in range(len(list_)-1):
-        # 比较第0~N个, 0~N-1, 0~N-2 ...
+        # 比较第0~N-1个, 0~N-2, 0~N-3 ...
         for j in range(len(list_)-1-i):
             if list_[j] > list_[j+1]:  # 若要从大到小排序改为<即可
                 list_[j], list_[j+1] = list_[j+1], list_[j]
@@ -38,12 +38,12 @@ def sub_sort(list_, low, high):
     x = list_[low]
     # low向后，high向前
     while low < high:
-        # 后面的数往前放
+        # 如果后面的数比x小，往前放
         while list_[high] >= x and high > low:
             high -= 1
         list_[low] = list_[high]
-        # 前面的数往后放
-        while list_[low] < x and low < high:
+        # 如果前面的数比x大或一样大，往后放
+        while list_[low] <= x and low < high:
             low += 1
         list_[high] = list_[low]
     # 当low和high相等时
@@ -53,7 +53,6 @@ def sub_sort(list_, low, high):
 
 # 快速排序
 def quickSort(list_, low, high):
-    low, high = 0, len(list_)-1
     if low < high:
         key = sub_sort(list_, low, high)
         quickSort(list_, low, key-1)
@@ -62,5 +61,5 @@ def quickSort(list_, low, high):
 
 # Eg. 4 1 3 2 1
 l = [4, 9, 3, 1, 2, 5, 8, 4]
-insertSort(l)
+quickSort(l, 0, len(l)-1)
 print(l)
