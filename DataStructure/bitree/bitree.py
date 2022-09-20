@@ -6,6 +6,9 @@
 """
 
 
+from squeue_copy import *
+
+
 class Node:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -42,6 +45,19 @@ class Bitree:
         self.postOrder(node.right)
         print(node.val, end=' ')
 
+    # 层次遍历
+    def levelOrder(self, node):
+        # 初始节点先入队，谁出队就遍历谁，并让它的左孩子右孩子都入队，直到队列为空
+        sq = SQueue()
+        sq.enqueue(node)  # 初始节点入队
+        while not sq.is_empty():
+            node = sq.dequeue()
+            print(node.val, end=' ')
+            if node.left:
+                sq.enqueue(node.left)
+            if node.right:
+                sq.enqueue(node.right)
+
 
 if __name__ == "__main__":
     # 根据后序遍历构建二叉树（左右根）
@@ -63,3 +79,5 @@ if __name__ == "__main__":
     bt.inOrder(bt.root)
     print()
     bt.postOrder(bt.root)
+    print()
+    bt.levelOrder(bt.root)
