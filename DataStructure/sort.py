@@ -23,14 +23,11 @@ def selectionSort(list_):
 def insertionSort(list_):
     for i in range(1, len(list_)):
         tmp = list_[i]
-        for j in range(i-1, -1, -1):
-            if tmp < list_[j]:
-                list_[j+1] = list_[j]
-                if j == 0:
-                    list_[0] = tmp
-            else:
-                list_[j+1] = tmp
-                break
+        j = i-1
+        while j >= 0 and tmp < list_[j]:
+            list_[j+1] = list_[j]  # 当前位置的数后移
+            j -= 1
+        list_[j+1] = tmp
 
 
 def sub_sort(list_, low, high):
