@@ -20,7 +20,7 @@ def selectionSort(list_):
 
 
 # 插入排序
-def insertSort(list_):
+def insertionSort(list_):
     for i in range(1, len(list_)):
         tmp = list_[i]
         for j in range(i-1, -1, -1):
