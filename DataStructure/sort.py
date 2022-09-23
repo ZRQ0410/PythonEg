@@ -43,7 +43,7 @@ def sub_sort(list_, low, high):
             high -= 1
         list_[low] = list_[high]
         # 如果前面的数比x大或一样大，往后放
-        while list_[low] <= x and low < high:
+        while list_[low] < x and low < high:
             low += 1
         list_[high] = list_[low]
     # 当low和high相等时
