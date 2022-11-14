@@ -7,6 +7,7 @@
 
 
 from squeue_copy import *
+from sstack_copy import *
 
 
 class Node:
@@ -45,8 +46,8 @@ class Bitree:
         self.postOrder(node.right)
         print(node.val, end=' ')
 
-    # 层次遍历
-    def levelOrder(self, node):
+    # breadth first search
+    def BFS(self, node):
         # 初始节点先入队，谁出队就遍历谁，并让它的左孩子右孩子都入队，直到队列为空
         sq = SQueue()
         sq.enqueue(node)  # 初始节点入队
@@ -57,6 +58,18 @@ class Bitree:
                 sq.enqueue(node.left)
             if node.right:
                 sq.enqueue(node.right)
+
+    # depth first search
+    def DFS(self, node):
+        s = SStack()
+        s.push(node)
+        while not s.is_empty():
+            node = s.pop()
+            print(node.val, end=" ")
+            if node.right is not None:
+                s.push(node.right)
+            if node.left is not None:
+                s.push(node.left)
 
 
 if __name__ == "__main__":
@@ -74,10 +87,11 @@ if __name__ == "__main__":
 
     # 将a作为遍历的起始位置
     bt = Bitree(a)
-    bt.preOrder(bt.root)
-    print()
-    bt.inOrder(bt.root)
-    print()
-    bt.postOrder(bt.root)
-    print()
-    bt.levelOrder(bt.root)
+    # bt.preOrder(bt.root)
+    # print()
+    # bt.inOrder(bt.root)
+    # print()
+    # bt.postOrder(bt.root)
+    # print()
+    # bt.BFS(bt.root)
+    bt.DFS(bt.root)
